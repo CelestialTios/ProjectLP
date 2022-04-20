@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e985855e2631184499acd1dfe195a64f, type: 3}
+  m_Name: Guard
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 7a24f1fd33709604793f5b0471d57501, type: 3}
+  weight: 1
+  pfieldOfView: {fileID: 2260603228398570609, guid: 3b3758fdc222dc5408ce6b02b955b422,
+    type: 3}
+  raycount: 20
+  fov: 30
+  ViewDistance: 15
