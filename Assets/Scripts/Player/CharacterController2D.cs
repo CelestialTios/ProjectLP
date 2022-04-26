@@ -59,8 +59,11 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (!wasGrounded)
+				Debug.Log(m_Rigidbody2D.velocity);
+				if (!wasGrounded && m_Grounded)
+                {
 					OnLandEvent.Invoke();
+                }
 			}
 		}
 	}
