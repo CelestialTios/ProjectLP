@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2765,7 +2765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354504551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.04389, y: 2.2450018, z: -10}
+  m_LocalPosition: {x: -37.14426, y: 2.2450018, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 584042088}
@@ -2899,7 +2899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403130878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.04389, y: 2.2450018, z: -10}
+  m_LocalPosition: {x: -37.14426, y: 2.2450018, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 177093783}
@@ -3041,36 +3041,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!1 &449245443
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 449245444}
-  m_Layer: 0
-  m_Name: CeilingCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &449245444
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449245443}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.37, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2037025658}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496997180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,7 +3069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2037025658}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584042087
 GameObject:
@@ -101820,7 +101790,6 @@ GameObject:
   - component: {fileID: 2037025655}
   - component: {fileID: 2037025654}
   - component: {fileID: 2037025653}
-  - component: {fileID: 2037025656}
   - component: {fileID: 2037025652}
   - component: {fileID: 2037025651}
   - component: {fileID: 2037025659}
@@ -101859,10 +101828,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae29866adeb62040b6ca47effb9141f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 2037025656}
   joystick: {fileID: 1491907739}
   animator: {fileID: 2037025659}
-  runSpeed: 40
+  _CurrentState: 
+  _facingRight: 1
+  runSpeed: 10
+  JumpForce: 10
+  Jump: 0
+  _GroundCheck: {fileID: 496997181}
+  _GroundRadius: 0.3
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  _Grounded: 0
+  refVelo: {x: 0, y: 0}
 --- !u!58 &2037025653
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -101876,7 +101855,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -1.12}
+  m_Offset: {x: 0, y: -1.12}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!61 &2037025654
@@ -101926,58 +101905,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2037025656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037025650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15669e789fd37f241b8d69753dd185fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 445
-  m_CrouchSpeed: 0.35
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  m_GroundCheck: {fileID: 496997181}
-  m_CeilingCheck: {fileID: 449245444}
-  m_CrouchDisableCollider: {fileID: 2037025654}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037025652}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnLand
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037025652}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnCrouch
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &2037025657
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102041,7 +101968,6 @@ Transform:
   m_LocalPosition: {x: -36.53, y: 1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 449245444}
   - {fileID: 496997181}
   m_Father: {fileID: 584042088}
   m_RootOrder: 3
