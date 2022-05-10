@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Dialogue
 {
     public class DialogueManager : MonoBehaviour
     {
         public Text nameText;
         public Text dialogText;
+        public Canvas dialogCanvas;
 
         public Queue<string> sentences;
 
         // Use this for initialization
         void Start()
         {
+            dialogCanvas.enabled = false;
             sentences = new Queue<string>();
         }
 
         public void StartDialogue(Dialogue dialogue)
         {
             sentences.Clear();                                  // Clear the queue
+            dialogCanvas.enabled = true;
             nameText.text = dialogue.name;
 
             foreach (string sentence in dialogue.sentences)      // Add at the end of the queue the sentence
@@ -61,8 +64,8 @@ namespace Assets.Scripts
 
         public void EndDialogue()
         {
+            dialogCanvas.enabled = false;
             sentences.Clear();
-            Debug.Log("End of conv");
         }
     }
 }

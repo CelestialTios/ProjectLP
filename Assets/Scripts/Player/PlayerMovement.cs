@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("- Components ")]
@@ -13,19 +14,18 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     [SerializeField] private string _CurrentState;
 
-    [Header("- Parameters ")]
-    private bool canMove = false;
+    [Header("- Parameters")]
     [SerializeField] private bool _facingRight = true;
-
+    private bool canMove = false;
     private float HorizontalMove = 0f;
     [SerializeField] private float runSpeed = 40f;
-
     bool Crouch = false;
 
     [Header("--- Jump ")]
     [SerializeField] private float JumpForce = 100f;
     [SerializeField] private bool Jump = false;
     [SerializeField] private bool wasGrounded;
+
     [Header("--- Ground ")]
     [SerializeField] private Transform _GroundCheck;
     [SerializeField] private float _GroundRadius = .3f;
@@ -242,7 +242,6 @@ public class PlayerMovement : MonoBehaviour
                 animationLength = animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
                 break;
         }
-        Debug.Log(animationLength);
         yield return new WaitForSeconds(animationLength);
         canMove = true;
     }
