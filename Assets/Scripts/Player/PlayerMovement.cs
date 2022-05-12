@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string _CurrentState;
 
     [Header("- Parameters")]
-    [SerializeField] private bool _facingRight = true;
+    private bool _facingRight = true;
     private bool canMove = false;
     private float HorizontalMove = 0f;
     [SerializeField] private float runSpeed = 40f;
@@ -66,22 +66,7 @@ public class PlayerMovement : MonoBehaviour
     //=====================================================
     private void FixedUpdate()
     {
-        //check if player is on the ground
-        wasGrounded = _Grounded;
-        _Grounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(_GroundCheck.position, _GroundRadius, _groundLayers);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                _Grounded = true;
-                //If player land, play landing animation
-                if (!wasGrounded && _Grounded)
-                {
-                    StartCoroutine(WaitAnimation(PLAYER_LAND));
-                }
-            }
-        }
+        IsGrounded();
         
         //Animation on movement X axis
         if (_Grounded)
@@ -101,68 +86,31 @@ public class PlayerMovement : MonoBehaviour
             if (rb2d.velocity.y > 0f) ChangeAnimationState(PLAYER_JUMPSTATE);
             else ChangeAnimationState(PLAYER_FALLSTATE);
         }
-        
-        // Movement on X axis
-        rb2d.velocity = new Vector2(HorizontalMove * runSpeed, rb2d.velocity.y);
-        Flip(HorizontalMove);
 
-        //Movement on Y axis
-        if (Jump && _Grounded)
-        {
-            rb2d.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-            Jump = false;
-        }
-    }
-
-    /*
-    void FixedUpdate()
-    {
-        if (_Grounded)
-        {
-            if( HorizontalMove != 0f)
-            {
-                ChangeAnimationState(PLAYER_RUN);
-            }
-            else 
-            {
-                ChangeAnimationState(PLAYER_IDLE);
-            }
-        }
         Movement();
-        if(Jump)
-        {
-            if( rb2d.velocity.y > 0f)
-            {
-                Debug.Log(rb2d.velocity.y);
-                ChangeAnimationState(PLAYER_JUMPSTATE);
-            }
-            else if(rb2d.velocity.y < 0f)
-            {
-                Debug.Log(rb2d.velocity.y);
-                ChangeAnimationState(PLAYER_FALLSTATE);
-            }
-            else
-            {
-                Debug.Log(rb2d.velocity.y);
-                ChangeAnimationState(PLAYER_LAND);
-            }
-        }
     }
-    */
 
+    
 
     /// <summary>
     /// Check if the player is on the ground or other place with Ground layer
     /// </summary>
     private void IsGrounded()
     {
-        Collider2D collider = Physics2D.OverlapCircle(_GroundCheck.position, _GroundRadius, _groundLayers);
-        if(collider != null)
+        wasGrounded = _Grounded;
+        _Grounded = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(_GroundCheck.position, _GroundRadius, _groundLayers);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            _Grounded = true;
-        }else
-        {
-            _Grounded = false;
+            if (colliders[i].gameObject != gameObject)
+            {
+                _Grounded = true;
+                //If player land, play landing animation
+                if (!wasGrounded && _Grounded)
+                {
+                    StartCoroutine(WaitAnimation(PLAYER_LAND));
+                }
+            }
         }
     }
 
@@ -173,15 +121,16 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
+        // Movement on X axis
         rb2d.velocity = new Vector2(HorizontalMove * runSpeed, rb2d.velocity.y);
-        if (Jump)
+        Flip(HorizontalMove);
+
+        //Movement on Y axis
+        if (Jump && _Grounded)
         {
-            StartCoroutine(WaitAnimation(PLAYER_START_JUMP));
-            rb2d.gravityScale = 1f;
-            rb2d.AddForce( new Vector2(0, JumpForce), ForceMode2D.Impulse );
+            rb2d.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             Jump = false;
         }
-        refVelo = rb2d.velocity;
     }
 
     /// <summary>

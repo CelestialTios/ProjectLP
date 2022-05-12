@@ -8,6 +8,7 @@ namespace Assets.Scripts.Dialogue
     {
         public Dialogue dialogue;
 
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if(collision.gameObject.CompareTag("Player"))
@@ -23,5 +24,6 @@ namespace Assets.Scripts.Dialogue
                 FindObjectOfType<DialogueManager>().EndDialogue();
             }
         }
+
     }
 }
