@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
     //QUIT BUTTON
     public void Quit()
     {
-
+        Application.Quit();
     }
 
     //OPTION BUTTON
