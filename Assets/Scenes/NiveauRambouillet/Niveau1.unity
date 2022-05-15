@@ -2847,13 +2847,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315210434}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1315210436}
+        m_TargetAssemblyTypeName: Assets.Scripts.UI.MenuManager, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11152,13 +11152,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315210434}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1315210436}
+        m_TargetAssemblyTypeName: Assets.Scripts.UI.MenuManager, Assembly-CSharp
+        m_MethodName: HideMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15511,13 +15511,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315210434}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1315210436}
+        m_TargetAssemblyTypeName: Assets.Scripts.UI.MenuManager, Assembly-CSharp
+        m_MethodName: Options
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15703,7 +15703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b22bf50a0ef90439e7ce3ddf4f4e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 1911272670}
+  menu: {fileID: 1911272664}
 --- !u!1 &1361542188
 GameObject:
   m_ObjectHideFlags: 0
@@ -102928,7 +102928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b5341951877ead46a3c48475355ea07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac4b33b4eaf5d864ab5a3fb15c6b1476, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -103005,7 +103005,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!4 &1933775640 stripped
 Transform:
@@ -103288,10 +103288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e150061e3e44927439fe47687b79dd0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencyText: {fileID: 480724883}
+  currency: 100
   skins: []
   skinsAvailable: []
   selectedSkin: 0
-  currency: 0
 --- !u!114 &2037025652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104066,7 +104067,7 @@ PrefabInstance:
     - target: {fileID: 9187756030376899381, guid: 805209b67adaab446b49ad5c66b22168,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9187756030376899381, guid: 805209b67adaab446b49ad5c66b22168,
         type: 3}
@@ -104107,6 +104108,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.00461
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.8227048
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.044542313
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.3403275
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187756030376899382, guid: 805209b67adaab446b49ad5c66b22168,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9187756030376899386, guid: 805209b67adaab446b49ad5c66b22168,
         type: 3}
