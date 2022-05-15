@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Enemy\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Environment\RespawnZone.cs" />
+    <Compile Include="Assets\MenuManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ReadMe.txt" />

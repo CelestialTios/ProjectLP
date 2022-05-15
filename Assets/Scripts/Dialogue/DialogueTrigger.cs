@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dialogue
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class DialogueTrigger : MonoBehaviour
     {
         public Dialogue dialogue;
