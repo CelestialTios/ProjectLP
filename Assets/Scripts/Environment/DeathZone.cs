@@ -11,10 +11,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //Destroy(collision.gameObject);
-
-            //TODO : animation | particles
-
+            //FindObjectOfType<AudioManager>().Play("Death");
             var _levelManager = LevelManager.instance;
             if (_levelManager.HasUsable()) point = _levelManager.GetPoint();
             else point = _levelManager.DefaultSpawnPoint;

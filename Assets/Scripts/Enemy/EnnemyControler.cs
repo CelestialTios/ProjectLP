@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.System;
 
 public class EnnemyControler : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class EnnemyControler : MonoBehaviour
     private SpriteRenderer sr;
     private bool Next = true;
     private bool isFacingRight;
+
+    private Transform point;
 
     public void Awake()
     {
@@ -99,5 +102,17 @@ public class EnnemyControler : MonoBehaviour
     {
         target = waypoints[Next ? 1 : 0];
         Next = !Next;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //FindObjectOfType<AudioManager>().Play("Death");
+            var _levelManager = LevelManager.instance;
+            if (_levelManager.HasUsable()) point = _levelManager.GetPoint();
+            else point = _levelManager.DefaultSpawnPoint;
+            collision.gameObject.transform.position = point.position;
+        }
     }
 }

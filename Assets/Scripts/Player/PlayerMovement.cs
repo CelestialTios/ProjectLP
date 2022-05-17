@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("- Animation")]
     public Animator animator;
-    [SerializeField] private string _CurrentState;
+    public string _CurrentState;
 
     [Header("- Parameters")]
     private bool _facingRight = true;
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _Grounded;
 
     [SerializeField] private Vector2 refVelo;
+    private bool End;
 
     public void Start()
     {
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canMove) return;
+        if (!canMove || End) return;
         if (joystick.Horizontal != 0f)
         {
             HorizontalMove = joystick.Horizontal;
@@ -66,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     //=====================================================
     private void FixedUpdate()
     {
+        if (End) return;
         IsGrounded();
         
         //Animation on movement X axis
@@ -187,12 +189,30 @@ public class PlayerMovement : MonoBehaviour
             case PLAYER_LAND:
                 animationLength = PLAYER_LAND_LENGTH;
                 break;
+            case PLAYER_WIN:
+                animationLength = PLAYER_WIN_LENGTH;
+                break;
             default:
                 animationLength = animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
                 break;
         }
         yield return new WaitForSeconds(animationLength);
         canMove = true;
+    }
+
+    public void WinState(Sprite WinSprite)
+    {
+        var d = Time.time;
+        End = true;
+        rb2d.velocity = Vector3.zero;
+        runSpeed = 0f;
+        HorizontalMove = 0f;
+        StartCoroutine(WaitAnimation(PLAYER_WIN));
+        GetComponent<SpriteRenderer>().sprite = WinSprite;
+        while((Time.time-d) < PLAYER_WIN_LENGTH)
+        {
+            
+        }
     }
 
 
@@ -208,4 +228,6 @@ public class PlayerMovement : MonoBehaviour
     public const string PLAYER_FALLSTATE = "Gus_Fall_State";
     public const string PLAYER_LAND = "Gus_Jump_Landing";
     public const float PLAYER_LAND_LENGTH = 0.350f;
+    public const string PLAYER_WIN = "Gus_WinLevel";
+    public const float PLAYER_WIN_LENGTH = 0.767f;
 }
